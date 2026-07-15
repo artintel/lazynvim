@@ -9,6 +9,17 @@ vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "o", "o<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "O", "O<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Space>", ":", {})
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+  },
+}
 vim.o.clipboard = "unnamedplus" -- 用系统剪贴板当默认寄存器
 
 vim.keymap.set("n", "<S-Up>", ":resize -1<CR>", { silent = true })
